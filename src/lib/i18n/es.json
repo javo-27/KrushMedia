@@ -1,0 +1,139 @@
+{
+  "meta": {
+    "title": "AI Readiness Score | Krush Media",
+    "description": "Descubre qué tan lista está tu empresa para AI. Evaluación gratuita en 5 minutos con reporte personalizado."
+  },
+  "nav": {
+    "logo": "Krush Media",
+    "cta": "Evaluar mi empresa"
+  },
+  "landing": {
+    "badge": "Evaluación gratuita — 5 minutos",
+    "headline": "¿Qué tan lista está tu empresa para AI?",
+    "subheadline": "Responde 20 preguntas y recibe un reporte personalizado con tu AI Readiness Score, las brechas más importantes y un plan de acción específico para tu negocio.",
+    "cta": "Comenzar evaluación",
+    "ctaSub": "Gratis — Sin tarjeta de crédito",
+    "howItWorksTitle": "¿Cómo funciona?",
+    "step1Title": "Contexto",
+    "step1Desc": "Cuéntanos sobre tu empresa, industria y equipo.",
+    "step2Title": "Evaluación",
+    "step2Desc": "Responde 20 preguntas sobre tus operaciones actuales.",
+    "step3Title": "Reporte AI",
+    "step3Desc": "Recibe un análisis personalizado con score, brechas y plan de acción.",
+    "benefitsTitle": "¿Qué incluye tu reporte?",
+    "benefit1Title": "AI Readiness Score",
+    "benefit1Desc": "Un puntaje de 0-100 que mide la madurez de AI en tu empresa vs. tu industria.",
+    "benefit2Title": "Brechas y Oportunidades",
+    "benefit2Desc": "Las 3 áreas donde AI tendría mayor impacto en tu negocio.",
+    "benefit3Title": "Plan de Acción",
+    "benefit3Desc": "5 acciones priorizadas con estimación de ROI y horas ahorradas por semana.",
+    "finalCta": "Descubre tu score ahora",
+    "poweredBy": "Powered by"
+  },
+  "context": {
+    "title": "Cuéntanos sobre tu empresa",
+    "subtitle": "Esta información personaliza tu evaluación y reporte.",
+    "companyName": "Nombre de la empresa",
+    "contactName": "Tu nombre",
+    "industry": "Industria",
+    "revenueRange": "Rango de ingresos mensuales (USD)",
+    "teamSize": "Tamaño del equipo",
+    "country": "País",
+    "painPoint": "¿Cuál es tu mayor dolor operativo?",
+    "painPointPlaceholder": "Ej: Perdemos muchas horas en tareas manuales de reporting...",
+    "continue": "Continuar",
+    "industries": {
+      "real-estate": "Bienes Raíces",
+      "hospitality": "Hospitalidad / Turismo",
+      "experience-brands": "Marcas de Experiencia",
+      "ecommerce": "E-commerce",
+      "professional-services": "Servicios Profesionales",
+      "other": "Otra"
+    },
+    "revenues": {
+      "10k-25k": "$10K - $25K",
+      "25k-50k": "$25K - $50K",
+      "50k-100k": "$50K - $100K",
+      "100k-500k": "$100K - $500K",
+      "500k+": "$500K+"
+    },
+    "teamSizes": {
+      "1-5": "1-5 personas",
+      "6-15": "6-15 personas",
+      "16-50": "16-50 personas",
+      "51-200": "51-200 personas",
+      "200+": "200+ personas"
+    },
+    "countries": {
+      "mexico": "México",
+      "usa": "Estados Unidos",
+      "other": "Otro"
+    }
+  },
+  "assessment": {
+    "categoryOf": "Categoría {current} de {total}",
+    "questionOf": "Pregunta {current} de {total}",
+    "next": "Siguiente",
+    "back": "Anterior",
+    "submit": "Generar mi reporte",
+    "optional": "(opcional)",
+    "selectOne": "Selecciona una opción",
+    "selectMultiple": "Selecciona todas las que apliquen",
+    "freeformHint": "Tu respuesta nos ayuda a personalizar el reporte"
+  },
+  "categories": {
+    "marketing": "Marketing y Publicidad",
+    "sales": "Ventas y CRM",
+    "operations": "Operaciones y Workflows",
+    "customerExperience": "Experiencia del Cliente",
+    "dataAnalytics": "Datos y Analítica"
+  },
+  "loading": {
+    "title": "Analizando tu empresa...",
+    "step1": "Evaluando respuestas",
+    "step2": "Comparando con tu industria",
+    "step3": "Identificando oportunidades de AI",
+    "step4": "Generando tu reporte personalizado"
+  },
+  "results": {
+    "title": "Tu AI Readiness Score",
+    "maturityLevels": {
+      "1": "Manual Total",
+      "2": "Iniciando",
+      "3": "En Desarrollo",
+      "4": "Avanzado",
+      "5": "AI-First"
+    },
+    "summaryTitle": "Resumen Ejecutivo",
+    "categoriesTitle": "Desglose por Categoría",
+    "gapsTitle": "Principales Brechas y Oportunidades",
+    "useCasesTitle": "Casos de Uso de AI para tu Negocio",
+    "actionPlanTitle": "Plan de Acción",
+    "ctaTitle": "¿Quieres implementar estas recomendaciones?",
+    "ctaSubtitle": "Agenda una llamada de estrategia AI de 30 minutos con Javier.",
+    "ctaButton": "Agendar llamada",
+    "shareButton": "Compartir mi score",
+    "hoursSaved": "hrs/semana ahorradas",
+    "monthlyRoi": "ROI mensual",
+    "impact": {
+      "high": "Alto impacto",
+      "medium": "Impacto medio",
+      "low": "Impacto bajo"
+    },
+    "complexity": {
+      "quick-win": "Quick Win",
+      "medium": "Medio",
+      "advanced": "Avanzado"
+    },
+    "benchmarkTitle": "Benchmark de tu Industria"
+  },
+  "gate": {
+    "title": "Desbloquea tu reporte completo",
+    "subtitle": "Ingresa tu email para ver las brechas, casos de uso y plan de acción personalizado.",
+    "email": "Email",
+    "phone": "Teléfono (opcional)",
+    "contactMe": "Quiero que Krush Media me contacte",
+    "unlock": "Desbloquear reporte",
+    "privacy": "No spam. Solo tu reporte."
+  }
+}
