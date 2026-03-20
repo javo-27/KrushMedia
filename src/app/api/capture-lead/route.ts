@@ -29,7 +29,7 @@ Wants to be contacted: ${contactMe ? 'Yes' : 'No'}
 Timestamp: ${new Date().toISOString()}
       `.trim()
 
-      await fetch('https://api.resend.com/emails', {
+      const emailRes = await fetch('https://api.resend.com/emails', {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${resendKey}`,
@@ -42,6 +42,11 @@ Timestamp: ${new Date().toISOString()}
           text: emailBody,
         }),
       })
+
+      if (!emailRes.ok) {
+        console.error('Resend API error:', await emailRes.text().catch(() => 'unknown'))
+        return NextResponse.json({ success: false, error: 'Failed to send notification' }, { status: 500 })
+      }
     } else {
       // Fallback: log to console for development
       console.log('=== NEW LEAD ===')

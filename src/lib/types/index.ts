@@ -98,6 +98,7 @@ export interface AssessmentState {
   currentCategory: number
   responses: Record<string, string | string[]>
   report: Report | null
+  error: string | null
   isGateUnlocked: boolean
   language: Lang
 }
@@ -109,5 +110,6 @@ export type AssessmentAction =
   | { type: 'PREV_CATEGORY' }
   | { type: 'SET_STEP'; payload: AssessmentState['currentStep'] }
   | { type: 'SET_REPORT'; payload: Report }
+  | { type: 'SET_ERROR'; payload: string | null }
   | { type: 'UNLOCK_GATE' }
   | { type: 'SET_LANGUAGE'; payload: Lang }

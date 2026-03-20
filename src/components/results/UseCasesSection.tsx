@@ -9,6 +9,7 @@ const complexityColors = {
 }
 
 export function UseCasesSection({ useCases, lang }: { useCases: UseCase[]; lang: Lang }) {
+  if (!useCases?.length) return null
   const dict = getDictionary(lang)
 
   return (

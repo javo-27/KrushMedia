@@ -59,6 +59,7 @@ export default function QuestionsPage() {
       // Calculate scores and submit
       const scores = calculateDeterministicScores(categories, state.responses)
       dispatch({ type: 'SET_STEP', payload: 'loading' })
+      dispatch({ type: 'SET_ERROR', payload: null })
       router.push(`/${lang}/evaluacion/resultado`)
 
       try {
@@ -72,10 +73,21 @@ export default function QuestionsPage() {
             language: lang,
           }),
         })
+        if (!res.ok) {
+          const data = await res.json().catch(() => ({}))
+          const msg = data.error || (lang === 'es' ? 'Error al generar el reporte.' : 'Error generating report.')
+          dispatch({ type: 'SET_ERROR', payload: msg })
+          return
+        }
         const report = await res.json()
         dispatch({ type: 'SET_REPORT', payload: report })
-      } catch (err) {
-        console.error('Failed to generate report:', err)
+      } catch {
+        dispatch({
+          type: 'SET_ERROR',
+          payload: lang === 'es'
+            ? 'Error de conexión. Verifica tu internet e intenta de nuevo.'
+            : 'Connection error. Check your internet and try again.',
+        })
       }
     } else {
       dispatch({ type: 'NEXT_CATEGORY' })

@@ -9,6 +9,7 @@ const impactColors = {
 }
 
 export function GapsSection({ gaps, lang }: { gaps: Gap[]; lang: Lang }) {
+  if (!gaps?.length) return null
   const dict = getDictionary(lang)
 
   return (

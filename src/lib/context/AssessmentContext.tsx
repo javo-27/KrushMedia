@@ -9,6 +9,7 @@ const initialState: AssessmentState = {
   currentCategory: 0,
   responses: {},
   report: null,
+  error: null,
   isGateUnlocked: false,
   language: 'es',
 }
@@ -29,7 +30,9 @@ function reducer(state: AssessmentState, action: AssessmentAction): AssessmentSt
     case 'SET_STEP':
       return { ...state, currentStep: action.payload }
     case 'SET_REPORT':
-      return { ...state, report: action.payload, currentStep: 'results' }
+      return { ...state, report: action.payload, error: null, currentStep: 'results' }
+    case 'SET_ERROR':
+      return { ...state, error: action.payload }
     case 'UNLOCK_GATE':
       return { ...state, isGateUnlocked: true }
     case 'SET_LANGUAGE':

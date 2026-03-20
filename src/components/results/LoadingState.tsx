@@ -3,8 +3,15 @@
 import { useEffect, useState } from 'react'
 import { Lang } from '@/lib/types'
 import { getDictionary, t } from '@/lib/i18n'
+import { Button } from '@/components/ui/Button'
 
-export function LoadingState({ lang }: { lang: Lang }) {
+interface LoadingStateProps {
+  lang: Lang
+  error?: string | null
+  onRetry?: () => void
+}
+
+export function LoadingState({ lang, error, onRetry }: LoadingStateProps) {
   const dict = getDictionary(lang)
   const steps = [
     t(dict, 'loading.step1'),
@@ -13,13 +20,40 @@ export function LoadingState({ lang }: { lang: Lang }) {
     t(dict, 'loading.step4'),
   ]
   const [activeStep, setActiveStep] = useState(0)
+  const [timedOut, setTimedOut] = useState(false)
 
   useEffect(() => {
+    if (error) return
     const interval = setInterval(() => {
       setActiveStep(prev => (prev < steps.length - 1 ? prev + 1 : prev))
     }, 2500)
     return () => clearInterval(interval)
-  }, [steps.length])
+  }, [steps.length, error])
+
+  // 90s client-side timeout
+  useEffect(() => {
+    if (error) return
+    const timer = setTimeout(() => setTimedOut(true), 90000)
+    return () => clearTimeout(timer)
+  }, [error])
+
+  const displayError = error || (timedOut
+    ? (lang === 'es' ? 'El análisis está tardando más de lo esperado.' : 'The analysis is taking longer than expected.')
+    : null)
+
+  if (displayError) {
+    return (
+      <div className="flex flex-col items-center justify-center min-h-[60vh] text-center">
+        <div className="text-4xl mb-6">⚠️</div>
+        <h2 className="text-xl font-bold mb-3 text-text-primary">{displayError}</h2>
+        {onRetry && (
+          <Button onClick={onRetry} className="mt-4">
+            {lang === 'es' ? 'Reintentar' : 'Try again'}
+          </Button>
+        )}
+      </div>
+    )
+  }
 
   return (
     <div className="flex flex-col items-center justify-center min-h-[60vh] text-center">

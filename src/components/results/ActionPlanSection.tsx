@@ -2,6 +2,7 @@ import { Lang, ActionItem } from '@/lib/types'
 import { getDictionary, t } from '@/lib/i18n'
 
 export function ActionPlanSection({ actionItems, lang }: { actionItems: ActionItem[]; lang: Lang }) {
+  if (!actionItems?.length) return null
   const dict = getDictionary(lang)
 
   return (

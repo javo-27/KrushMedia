@@ -5,6 +5,7 @@ import { calculateDeterministicScores, getMaturityLevel, normalizeCategoryScore 
 import { categories as esCategories } from '@/lib/questions/es'
 import { categories as enCategories } from '@/lib/questions/en'
 import { Lang, AIReportData, Report } from '@/lib/types'
+import { validateAIReportData } from '@/lib/validation/report-validation'
 
 const client = new Anthropic()
 
@@ -27,18 +28,40 @@ export async function POST(req: NextRequest) {
     const systemPrompt = buildSystemPrompt(lang)
     const userPrompt = buildUserPrompt(businessContext, responses, scores, lang)
 
-    // Call Anthropic API
-    const message = await client.messages.create({
-      model: 'claude-sonnet-4-20250514',
-      max_tokens: 4096,
-      system: systemPrompt,
-      messages: [{ role: 'user', content: userPrompt }],
-    })
+    // Call Anthropic API with 60s timeout
+    const controller = new AbortController()
+    const timeout = setTimeout(() => controller.abort(), 60000)
+
+    let message: Anthropic.Message
+    try {
+      message = await client.messages.create(
+        {
+          model: 'claude-sonnet-4-20250514',
+          max_tokens: 4096,
+          system: systemPrompt,
+          messages: [{ role: 'user', content: userPrompt }],
+        },
+        { signal: controller.signal }
+      )
+    } catch (err: unknown) {
+      clearTimeout(timeout)
+      if (err instanceof Error && err.name === 'AbortError') {
+        return NextResponse.json(
+          { error: 'Report generation timed out. Please try again.' },
+          { status: 504 }
+        )
+      }
+      throw err
+    }
+    clearTimeout(timeout)
 
     // Extract text from response
     const textBlock = message.content.find(b => b.type === 'text')
     if (!textBlock || textBlock.type !== 'text') {
-      throw new Error('No text in API response')
+      return NextResponse.json(
+        { error: 'No text in API response. Please try again.' },
+        { status: 502 }
+      )
     }
 
     // Parse JSON — handle potential markdown code fences
@@ -47,7 +70,24 @@ export async function POST(req: NextRequest) {
       jsonStr = jsonStr.replace(/^```(?:json)?\n?/, '').replace(/\n?```$/, '')
     }
 
-    const aiData: AIReportData = JSON.parse(jsonStr)
+    let aiData: AIReportData
+    try {
+      const parsed = JSON.parse(jsonStr)
+      if (!validateAIReportData(parsed)) {
+        console.error('AI response validation failed:', JSON.stringify(parsed).slice(0, 500))
+        return NextResponse.json(
+          { error: 'AI generated an incomplete report. Please try again.' },
+          { status: 502 }
+        )
+      }
+      aiData = parsed
+    } catch (parseErr) {
+      console.error('JSON parse failed:', parseErr, 'Raw:', jsonStr.slice(0, 500))
+      return NextResponse.json(
+        { error: 'Failed to parse AI response. Please try again.' },
+        { status: 502 }
+      )
+    }
 
     // Compute final scores
     const totalScore = Math.min(100, scores.total + aiData.aiAdjustmentScore)

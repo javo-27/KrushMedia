@@ -29,7 +29,7 @@ export function EmailGateModal({ report, lang, onUnlock }: EmailGateModalProps) 
 
     setLoading(true)
     try {
-      await fetch('/api/capture-lead', {
+      const res = await fetch('/api/capture-lead', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -43,7 +43,12 @@ export function EmailGateModal({ report, lang, onUnlock }: EmailGateModalProps) 
           overallScore: report.overallScore,
         }),
       })
-      onUnlock()
+      const data = await res.json()
+      if (res.ok && data.success) {
+        onUnlock()
+      } else {
+        setError(lang === 'es' ? 'Error al guardar. Intenta de nuevo.' : 'Error saving. Please try again.')
+      }
     } catch {
       setError(lang === 'es' ? 'Error al enviar. Intenta de nuevo.' : 'Error sending. Try again.')
     } finally {
