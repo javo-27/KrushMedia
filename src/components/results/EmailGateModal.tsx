@@ -22,7 +22,7 @@ export function EmailGateModal({ report, lang, onUnlock }: EmailGateModalProps) 
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
-    if (!email || !email.includes('@')) {
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       setError(lang === 'es' ? 'Ingresa un email válido' : 'Enter a valid email')
       return
     }

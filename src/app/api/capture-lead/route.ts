@@ -1,13 +1,30 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { z } from 'zod'
+
+const leadSchema = z.object({
+  email: z.string().email(),
+  phone: z.string().optional().default(''),
+  contactMe: z.boolean().optional().default(false),
+  companyName: z.string().min(1),
+  contactName: z.string().min(1),
+  industry: z.string().min(1),
+  revenueRange: z.string().min(1),
+  overallScore: z.number().min(0).max(100),
+})
 
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json()
-    const { email, phone, contactMe, companyName, contactName, industry, revenueRange, overallScore } = body
+    const parsed = leadSchema.safeParse(body)
 
-    if (!email) {
-      return NextResponse.json({ error: 'Email is required' }, { status: 400 })
+    if (!parsed.success) {
+      return NextResponse.json(
+        { error: 'Invalid lead data', details: parsed.error.flatten().fieldErrors },
+        { status: 400 }
+      )
     }
+
+    const { email, phone, contactMe, companyName, contactName, industry, revenueRange, overallScore } = parsed.data
 
     // Send notification email via Resend (if configured) or log
     const resendKey = process.env.RESEND_API_KEY
