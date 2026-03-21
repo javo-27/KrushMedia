@@ -54,7 +54,7 @@ Timestamp: ${new Date().toISOString()}
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            from: 'AI Readiness Score <onboarding@resend.dev>',
+            from: 'AI Readiness Score <notifications@krushmedia.mx>',
             to: notifyEmail,
             subject: `[Lead] ${companyName} - Score ${overallScore}/100 - ${contactMe ? 'WANTS CONTACT' : 'Report only'}`,
             text: emailBody,
