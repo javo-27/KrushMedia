@@ -91,6 +91,7 @@ export default function QuestionsPage() {
       }
     } else {
       dispatch({ type: 'NEXT_CATEGORY' })
+      window.scrollTo({ top: 0, behavior: 'smooth' })
     }
   }
 
@@ -136,6 +137,7 @@ export default function QuestionsPage() {
               router.push(`/${lang}/evaluacion`)
             } else {
               dispatch({ type: 'PREV_CATEGORY' })
+              window.scrollTo({ top: 0, behavior: 'smooth' })
             }
           }}
         >
