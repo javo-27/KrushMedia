@@ -46,23 +46,30 @@ Wants to be contacted: ${contactMe ? 'Yes' : 'No'}
 Timestamp: ${new Date().toISOString()}
       `.trim()
 
-      const emailRes = await fetch('https://api.resend.com/emails', {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${resendKey}`,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          from: 'AI Readiness Score <notifications@krushmedia.mx>',
-          to: notifyEmail,
-          subject: `[Lead] ${companyName} - Score ${overallScore}/100 - ${contactMe ? 'WANTS CONTACT' : 'Report only'}`,
-          text: emailBody,
-        }),
-      })
+      try {
+        const emailRes = await fetch('https://api.resend.com/emails', {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${resendKey}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            from: 'AI Readiness Score <onboarding@resend.dev>',
+            to: notifyEmail,
+            subject: `[Lead] ${companyName} - Score ${overallScore}/100 - ${contactMe ? 'WANTS CONTACT' : 'Report only'}`,
+            text: emailBody,
+          }),
+        })
 
-      if (!emailRes.ok) {
-        console.error('Resend API error:', await emailRes.text().catch(() => 'unknown'))
-        return NextResponse.json({ success: false, error: 'Failed to send notification' }, { status: 500 })
+        if (!emailRes.ok) {
+          const errText = await emailRes.text().catch(() => 'unknown')
+          console.error('Resend API error:', errText)
+          // Log lead anyway so it's not lost
+          console.log('=== LEAD (email failed) ===', { email, phone, contactMe, companyName, contactName, industry, revenueRange, overallScore })
+        }
+      } catch (emailErr) {
+        console.error('Email send failed:', emailErr)
+        console.log('=== LEAD (email failed) ===', { email, phone, contactMe, companyName, contactName, industry, revenueRange, overallScore })
       }
     } else {
       // Fallback: log to console for development
