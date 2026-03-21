@@ -8,11 +8,11 @@
     "cta": "Evaluar mi empresa"
   },
   "landing": {
-    "badge": "Evaluación gratuita — 5 minutos",
+    "badge": "Evaluación gratuita - 5 minutos",
     "headline": "¿Qué tan lista está tu empresa para AI?",
     "subheadline": "Responde 20 preguntas y recibe un reporte personalizado con tu AI Readiness Score, las brechas más importantes y un plan de acción específico para tu negocio.",
     "cta": "Comenzar evaluación",
-    "ctaSub": "Gratis — Sin tarjeta de crédito",
+    "ctaSub": "Gratis - Sin tarjeta de crédito",
     "howItWorksTitle": "¿Cómo funciona?",
     "step1Title": "Contexto",
     "step1Desc": "Cuéntanos sobre tu empresa, industria y equipo.",
@@ -96,7 +96,7 @@
     "step4": "Generando tu reporte personalizado"
   },
   "results": {
-    "title": "Tu AI Readiness Score",
+    "title": "{name}, este es tu AI Readiness Score",
     "maturityLevels": {
       "1": "Manual Total",
       "2": "Iniciando",

@@ -8,11 +8,11 @@
     "cta": "Assess my business"
   },
   "landing": {
-    "badge": "Free assessment — 5 minutes",
+    "badge": "Free assessment - 5 minutes",
     "headline": "How AI-ready is your business?",
     "subheadline": "Answer 20 questions and receive a personalized report with your AI Readiness Score, top gaps, and a specific action plan for your business.",
     "cta": "Start assessment",
-    "ctaSub": "Free — No credit card required",
+    "ctaSub": "Free - No credit card required",
     "howItWorksTitle": "How does it work?",
     "step1Title": "Context",
     "step1Desc": "Tell us about your company, industry, and team.",
@@ -96,7 +96,7 @@
     "step4": "Generating your personalized report"
   },
   "results": {
-    "title": "Your AI Readiness Score",
+    "title": "{name}, here's your AI Readiness Score",
     "maturityLevels": {
       "1": "Fully Manual",
       "2": "Getting Started",

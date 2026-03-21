@@ -8,12 +8,14 @@ interface ScoreHeroProps {
   score: number
   maturityLabel: string
   companyName: string
+  contactName: string
   benchmark: IndustryBenchmark
   lang: Lang
 }
 
-export function ScoreHero({ score, maturityLabel, companyName, benchmark, lang }: ScoreHeroProps) {
+export function ScoreHero({ score, maturityLabel, companyName, contactName, benchmark, lang }: ScoreHeroProps) {
   const dict = getDictionary(lang)
+  const firstName = contactName.split(' ')[0]
   const [animatedScore, setAnimatedScore] = useState(0)
 
   useEffect(() => {
@@ -45,7 +47,7 @@ export function ScoreHero({ score, maturityLabel, companyName, benchmark, lang }
 
   return (
     <div className="text-center animate-fade-up">
-      <h1 className="text-3xl font-bold mb-8">{t(dict, 'results.title')}</h1>
+      <h1 className="text-3xl font-bold mb-8">{t(dict, 'results.title', { name: firstName })}</h1>
 
       {/* Score gauge */}
       <div className="inline-flex flex-col items-center">

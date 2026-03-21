@@ -26,11 +26,11 @@ export const categories: Category[] = [
         text: 'How automated is your marketing campaign management?',
         isScored: true,
         options: [
-          { value: '1', label: '100% manual — everything done by hand', score: 1 },
-          { value: '2', label: 'Somewhat automated — basic scheduling', score: 2 },
-          { value: '3', label: 'Partially — some automated rules active', score: 3 },
-          { value: '4', label: 'Mostly automated — connected workflows', score: 4 },
-          { value: '5', label: 'Fully automated — AI optimizes in real-time', score: 5 },
+          { value: '1', label: '100% manual - everything done by hand', score: 1 },
+          { value: '2', label: 'Somewhat automated - basic scheduling', score: 2 },
+          { value: '3', label: 'Partially - some automated rules active', score: 3 },
+          { value: '4', label: 'Mostly automated - connected workflows', score: 4 },
+          { value: '5', label: 'Fully automated - AI optimizes in real-time', score: 5 },
         ],
       },
       {
@@ -40,9 +40,9 @@ export const categories: Category[] = [
         isScored: true,
         options: [
           { value: 'none', label: 'No, no AI at all', score: 0 },
-          { value: 'experimenting', label: 'Experimenting — ChatGPT for basic content', score: 2 },
-          { value: 'some', label: 'Some tasks — copywriting, analysis, segmentation', score: 3 },
-          { value: 'core', label: 'Core part of workflow — AI automations integrated', score: 5 },
+          { value: 'experimenting', label: 'Experimenting - ChatGPT for basic content', score: 2 },
+          { value: 'some', label: 'Some tasks - copywriting, analysis, segmentation', score: 3 },
+          { value: 'core', label: 'Core part of workflow - AI automations integrated', score: 5 },
         ],
       },
       {
@@ -68,7 +68,7 @@ export const categories: Category[] = [
           { value: 'nothing', label: 'Spreadsheets or nothing formal', score: 1 },
           { value: 'basic-crm', label: 'Basic CRM (HubSpot free, Pipedrive)', score: 2 },
           { value: 'advanced-crm', label: 'Advanced CRM with automations', score: 4 },
-          { value: 'ai-crm', label: 'CRM with AI — scoring, insights, predictions', score: 5 },
+          { value: 'ai-crm', label: 'CRM with AI - scoring, insights, predictions', score: 5 },
         ],
       },
       {
@@ -80,7 +80,7 @@ export const categories: Category[] = [
           { value: '24h+', label: 'More than 24 hours', score: 1 },
           { value: 'same-day', label: 'Same day', score: 2 },
           { value: '2h', label: 'Less than 2 hours', score: 3 },
-          { value: '15min', label: 'Less than 15 minutes — automated response', score: 5 },
+          { value: '15min', label: 'Less than 15 minutes - automated response', score: 5 },
         ],
       },
       {
@@ -130,7 +130,7 @@ export const categories: Category[] = [
           { value: 'none', label: 'None', score: 0 },
           { value: 'basic', label: 'A few basic automations', score: 2 },
           { value: 'multiple', label: 'Multiple automated workflows', score: 4 },
-          { value: 'integrated', label: 'Fully integrated — AI + automation', score: 5 },
+          { value: 'integrated', label: 'Fully integrated - AI + automation', score: 5 },
         ],
       },
       {
@@ -190,7 +190,7 @@ export const categories: Category[] = [
         isScored: true,
         options: [
           { value: 'rarely', label: 'Rarely', score: 1 },
-          { value: 'manual', label: 'Sometimes — manual review', score: 2 },
+          { value: 'manual', label: 'Sometimes - manual review', score: 2 },
           { value: 'regular', label: 'Regular surveys with analysis', score: 3 },
           { value: 'automated', label: 'Automated feedback loops + AI analysis', score: 5 },
         ],
@@ -242,7 +242,7 @@ export const categories: Category[] = [
           { value: 'rarely', label: 'Rarely', score: 1 },
           { value: 'monthly', label: 'Monthly', score: 2 },
           { value: 'weekly', label: 'Weekly', score: 4 },
-          { value: 'realtime', label: 'Real-time — dashboards + alerts', score: 5 },
+          { value: 'realtime', label: 'Real-time - dashboards + alerts', score: 5 },
         ],
       },
       {

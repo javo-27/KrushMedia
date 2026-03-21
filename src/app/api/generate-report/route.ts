@@ -11,6 +11,14 @@ const client = new Anthropic()
 
 export async function POST(req: NextRequest) {
   try {
+    if (!process.env.ANTHROPIC_API_KEY) {
+      console.error('ANTHROPIC_API_KEY is not set')
+      return NextResponse.json(
+        { error: 'Server configuration error. Contact support.' },
+        { status: 500 }
+      )
+    }
+
     const body = await req.json()
     const { businessContext, responses, language } = body
     const lang = (language || 'es') as Lang
@@ -36,7 +44,7 @@ export async function POST(req: NextRequest) {
     try {
       message = await client.messages.create(
         {
-          model: 'claude-sonnet-4-20250514',
+          model: 'claude-sonnet-4-6',
           max_tokens: 4096,
           system: systemPrompt,
           messages: [{ role: 'user', content: userPrompt }],
@@ -64,7 +72,7 @@ export async function POST(req: NextRequest) {
       )
     }
 
-    // Parse JSON — handle potential markdown code fences
+    // Parse JSON - handle potential markdown code fences
     let jsonStr = textBlock.text.trim()
     if (jsonStr.startsWith('```')) {
       jsonStr = jsonStr.replace(/^```(?:json)?\n?/, '').replace(/\n?```$/, '')
@@ -127,8 +135,23 @@ export async function POST(req: NextRequest) {
     }
 
     return NextResponse.json(report)
-  } catch (error) {
-    console.error('Report generation failed:', error)
+  } catch (error: unknown) {
+    const errMsg = error instanceof Error ? error.message : String(error)
+    console.error('Report generation failed:', errMsg)
+
+    // Return specific error info for debugging
+    if (errMsg.includes('authentication') || errMsg.includes('401')) {
+      return NextResponse.json(
+        { error: 'API key issue. Check ANTHROPIC_API_KEY in environment variables.' },
+        { status: 401 }
+      )
+    }
+    if (errMsg.includes('model') || errMsg.includes('404')) {
+      return NextResponse.json(
+        { error: 'Model not available. Contact support.' },
+        { status: 502 }
+      )
+    }
     return NextResponse.json(
       { error: 'Failed to generate report. Please try again.' },
       { status: 500 }

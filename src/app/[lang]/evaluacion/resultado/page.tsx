@@ -77,6 +77,7 @@ export default function ResultadoPage() {
         score={report.overallScore}
         maturityLabel={report.maturityLabel}
         companyName={report.businessContext.companyName}
+        contactName={report.businessContext.contactName}
         benchmark={report.ai.industryBenchmark}
         lang={lang as Lang}
       />

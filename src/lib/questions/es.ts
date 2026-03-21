@@ -26,11 +26,11 @@ export const categories: Category[] = [
         text: '¿Qué tan automatizada está la gestión de tus campañas de marketing?',
         isScored: true,
         options: [
-          { value: '1', label: '100% manual — todo se hace a mano', score: 1 },
-          { value: '2', label: 'Algo automatizado — usamos scheduling básico', score: 2 },
-          { value: '3', label: 'Parcialmente — algunas reglas automáticas activas', score: 3 },
-          { value: '4', label: 'Mayormente automatizado — workflows conectados', score: 4 },
-          { value: '5', label: 'Totalmente automatizado — AI optimiza en tiempo real', score: 5 },
+          { value: '1', label: '100% manual - todo se hace a mano', score: 1 },
+          { value: '2', label: 'Algo automatizado - usamos scheduling básico', score: 2 },
+          { value: '3', label: 'Parcialmente - algunas reglas automáticas activas', score: 3 },
+          { value: '4', label: 'Mayormente automatizado - workflows conectados', score: 4 },
+          { value: '5', label: 'Totalmente automatizado - AI optimiza en tiempo real', score: 5 },
         ],
       },
       {
@@ -40,9 +40,9 @@ export const categories: Category[] = [
         isScored: true,
         options: [
           { value: 'none', label: 'No, nada de AI', score: 0 },
-          { value: 'experimenting', label: 'Experimentando — ChatGPT para contenido básico', score: 2 },
-          { value: 'some', label: 'Algunas tareas — copywriting, análisis, segmentación', score: 3 },
-          { value: 'core', label: 'Parte central del workflow — automatizaciones con AI integradas', score: 5 },
+          { value: 'experimenting', label: 'Experimentando - ChatGPT para contenido básico', score: 2 },
+          { value: 'some', label: 'Algunas tareas - copywriting, análisis, segmentación', score: 3 },
+          { value: 'core', label: 'Parte central del workflow - automatizaciones con AI integradas', score: 5 },
         ],
       },
       {
@@ -68,7 +68,7 @@ export const categories: Category[] = [
           { value: 'nothing', label: 'Hojas de cálculo o nada formal', score: 1 },
           { value: 'basic-crm', label: 'CRM básico (HubSpot free, Pipedrive)', score: 2 },
           { value: 'advanced-crm', label: 'CRM avanzado con automatizaciones', score: 4 },
-          { value: 'ai-crm', label: 'CRM con AI — scoring, insights, predicciones', score: 5 },
+          { value: 'ai-crm', label: 'CRM con AI - scoring, insights, predicciones', score: 5 },
         ],
       },
       {
@@ -80,7 +80,7 @@ export const categories: Category[] = [
           { value: '24h+', label: 'Más de 24 horas', score: 1 },
           { value: 'same-day', label: 'El mismo día', score: 2 },
           { value: '2h', label: 'Menos de 2 horas', score: 3 },
-          { value: '15min', label: 'Menos de 15 minutos — respuesta automatizada', score: 5 },
+          { value: '15min', label: 'Menos de 15 minutos - respuesta automatizada', score: 5 },
         ],
       },
       {
@@ -130,7 +130,7 @@ export const categories: Category[] = [
           { value: 'none', label: 'Ninguna', score: 0 },
           { value: 'basic', label: 'Algunas automatizaciones básicas', score: 2 },
           { value: 'multiple', label: 'Múltiples workflows automatizados', score: 4 },
-          { value: 'integrated', label: 'Completamente integrado — AI + automatización', score: 5 },
+          { value: 'integrated', label: 'Completamente integrado - AI + automatización', score: 5 },
         ],
       },
       {
@@ -190,7 +190,7 @@ export const categories: Category[] = [
         isScored: true,
         options: [
           { value: 'rarely', label: 'Rara vez', score: 1 },
-          { value: 'manual', label: 'A veces — revisión manual', score: 2 },
+          { value: 'manual', label: 'A veces - revisión manual', score: 2 },
           { value: 'regular', label: 'Encuestas regulares con análisis', score: 3 },
           { value: 'automated', label: 'Loops automatizados de feedback + análisis AI', score: 5 },
         ],
@@ -242,7 +242,7 @@ export const categories: Category[] = [
           { value: 'rarely', label: 'Rara vez', score: 1 },
           { value: 'monthly', label: 'Mensualmente', score: 2 },
           { value: 'weekly', label: 'Semanalmente', score: 4 },
-          { value: 'realtime', label: 'En tiempo real — dashboards + alertas', score: 5 },
+          { value: 'realtime', label: 'En tiempo real - dashboards + alertas', score: 5 },
         ],
       },
       {

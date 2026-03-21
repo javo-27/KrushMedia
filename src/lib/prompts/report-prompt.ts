@@ -2,14 +2,14 @@ import { BusinessContext, CategoryScores, Lang } from '@/lib/types'
 
 export function buildSystemPrompt(lang: Lang): string {
   const langInstructions = lang === 'es'
-    ? 'Responde en español. Usa tono directo, experto y práctico — sin fluff.'
-    : 'Respond in English. Use a direct, expert, and practical tone — no fluff.'
+    ? 'Responde en español. Usa tono directo, experto y práctico - sin fluff.'
+    : 'Respond in English. Use a direct, expert, and practical tone - no fluff.'
 
   return `You are an AI readiness analyst for Krush Media, an AI-first digital growth agency based in Mexico. You evaluate businesses on their AI adoption maturity and provide actionable, specific recommendations.
 
 ${langInstructions}
 
-Your recommendations should be specific to the business's industry, size, and current maturity level. Avoid generic advice — every recommendation should feel tailored.
+Your recommendations should be specific to the business's industry, size, and current maturity level. Avoid generic advice - every recommendation should feel tailored.
 
 When estimating ROI and hours saved, be realistic and conservative. Base estimates on the company's revenue range and team size.
 
